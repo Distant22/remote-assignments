@@ -3,21 +3,19 @@ const app = express()
 const port = 3000
 
 app.get('/data', (req, res) => {
-    const number = req.query.number
+    let number = req.query.number
     if (number == undefined){
         res.send('Lack of Parameter')
     } else if (isNaN(number)) {
         res.send('Wrong Parameter')
     } else {
-        let ans = 0
-        for(let i = 1 ; i <= number ; i++){
-            ans += i
-        }
+        number = parseInt(number)
+        let ans = (number*(number+1))/2
         res.send(ans.toString())
     }
     
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Assignment 5 listening on port ${port}`)
 })
