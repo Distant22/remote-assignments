@@ -6,15 +6,14 @@ app.get('/data', (req, res) => {
     const number = req.query.number
     if (number == undefined){
         res.send('Lack of Parameter')
-    } else if (typeof number !== Number) {
+    } else if (isNaN(number)) {
         res.send('Wrong Parameter')
-        console.log(typeof number)
     } else {
         let ans = 0
         for(let i = 1 ; i <= number ; i++){
             ans += i
         }
-        res.send(i)
+        res.send(ans.toString())
     }
     
 })
